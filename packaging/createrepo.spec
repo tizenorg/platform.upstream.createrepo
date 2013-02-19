@@ -8,7 +8,6 @@ Group:          System/Base
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  python
 Requires:       deltarpm
-Requires:       pyliblzma
 Requires:       python >= 2.7
 Requires:       rpm >= 4.11.0
 Requires:       python-rpm
