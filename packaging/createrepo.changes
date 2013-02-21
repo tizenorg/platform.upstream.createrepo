@@ -1,3 +1,6 @@
+* Wed Feb 20 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20130219.183728@bd06ac8
+- Use deltainfo instead of prestodelta
+
 * Tue Feb 19 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20130219.181447@2b2ec25
 - Do not depend on pyliblzma
 
