@@ -74,7 +74,7 @@ class MetaDataConfig(object):
         self.deltadir = None
         self.delta_relative = 'drpms/'
         self.oldpackage_paths = [] # where to look for the old packages -
-        self.deltafile = 'prestodelta.xml.gz'
+        self.deltafile = 'deltainfo.xml.gz'
         self.num_deltas = 1 # number of older versions to delta (max)
         self.max_delta_rpm_size = 100000000
         self.update_md_path = None
@@ -446,7 +446,7 @@ class MetaDataGenerator:
                                      self.conf.deltafile)
         fo = _gzipOpen(deltafilepath, 'w')
         fo.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-        fo.write('<prestodelta>\n')
+        fo.write('<deltainfo>\n')
         return fo
 
 
@@ -720,7 +720,7 @@ class MetaDataGenerator:
             if not self.conf.quiet:
                 self.callback.log(_('Saving delta metadata'))
             self.deltafile.write(self.generate_delta_xml())
-            self.deltafile.write('\n</prestodelta>')
+            self.deltafile.write('\n</deltainfo>')
             self.deltafile.close()
             if self.conf.profile:
                 self.callback.log('deltam time: %0.3f' % (time.time() - deltam_st))
@@ -913,7 +913,7 @@ class MetaDataGenerator:
                      (self.conf.primaryfile, 'primary')]
 
         if self.conf.deltas:
-            workfiles.append((self.conf.deltafile, 'prestodelta'))
+            workfiles.append((self.conf.deltafile, 'deltainfo'))
         
         if self.conf.database:
             if not self.conf.quiet: self.callback.log('Generating sqlite DBs')
