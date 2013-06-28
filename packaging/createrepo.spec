@@ -6,6 +6,7 @@ Summary:        Creates a common metadata repository
 Url:            http://createrepo.baseurl.org/
 Group:          System/Base
 Source:         %{name}-%{version}.tar.gz
+Source1001: 	createrepo.manifest
 BuildRequires:  python
 Requires:       deltarpm
 Requires:       python >= 2.7
@@ -23,6 +24,7 @@ packages.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 
@@ -30,6 +32,7 @@ packages.
 make DESTDIR=%{buildroot} sysconfdir=%{_sysconfdir} install
 
 %files
+%manifest %{name}.manifest
 %defattr(-, root, root,-)
 %license COPYING COPYING.lib
 %{_sysconfdir}/bash_completion.d/
